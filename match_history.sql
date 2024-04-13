@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS history (
+    match INTEGER PRIMARY KEY AUTOINCREMENT,
+    win INTEGER,
+    lose INTEGER,
+    tie INTEGER
+);
