@@ -20,8 +20,4 @@ class draw:
         file_name = 'match.png'
         plt.savefig(file_name)
         return file_name
-    def delete():
-        file_path = "match.png"
-        os.remove(file_path)
-
 
