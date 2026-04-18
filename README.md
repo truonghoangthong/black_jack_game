@@ -1,64 +1,96 @@
-# My Website
-This Black Jack game is a project developed using Python and the Pygame library. The game recreates the traditional Black Jack experience, where players compete against the dealer to determine who can get closest to 21 without going over.
+# Blackjack Game
 
-# History
-Black Jack, also known as 21 or Pontoon, is a popular card game played worldwide. Originating from European card games, Black Jack became one of the most popular gambling games in America during the 20th century. It has appeared in numerous cultural works and become an iconic casino game.
+A 1v1 Blackjack game built with Python and Pygame. The player competes against a computer dealer, with match history tracked via SQLite and visualized as a bar chart.
 
-# Functionality
-Play Black Jack: The game allows players to engage in authentic Black Jack rounds, competing against the computer dealer.
-Place Bets and Draw Cards: Players can place bets and draw additional cards to try to get as close to 21 as possible without exceeding it.
-Display Results: The outcome of each round is clearly displayed, including the player's and dealer's total points, along with win, loss, or draw results.
+---
 
-# Artwork and Animation
-The game features captivating artwork and animations, enhancing the player's experience with lively Black Jack gameplay.
-
-# Using the Pygame Library
-Pygame is a powerful Python library for game and multimedia application development. This Black Jack game utilizes Pygame to create a visual and interactive graphical interface.
-## Files Folder :
-```
-* _pycache_
-* card_image
-* image
-* music
-```
-
-## main files :
-```
-* button.py
-* card.py
-* db_conn.py
-* draw_chart.py
-* drawing_card.py
-* game_note.py
-* image_and_logo.py
-* main_file_game.py
-* match.py
-* match_history.csv
-* match_history.sql
-* news.db
-* text_and_color.py
+## Project Structure
 
 ```
-
-## Used Programming Languages :
+blackjack/
+├── card_image/              # Card face images (.png)
+├── image/                   # UI images and button assets
+├── music/                   # Background music
+├── button.py                # Button component (click detection, rendering)
+├── card.py                  # Deck generation and shuffling
+├── db_conn.py               # SQLite database initialization
+├── draw_chart.py            # Match history bar chart (matplotlib)
+├── drawing_card.py          # Card rendering and game logic
+├── game_note.py             # Match result persistence (SQLite + CSV export)
+├── image_and_logo.py        # Image/asset loader
+├── main_file_game.py        # Main game loop and state management
+├── match_history.csv        # Exported match history
+├── match_history.sql        # SQL schema
+├── news.db                  # SQLite database
+└── text_and_color.py        # Font and color definitions
 ```
-* Python
+
+---
+
+## Prerequisites
+
+- Python 3.8+
+- pip
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/truonghoangthong/black_jack_game
+cd black_jack_game
+pip install pygame matplotlib pandas
 ```
 
-## Used Technologies :
+---
+
+## Running the Game
+
+```bash
+python main_file_game.py
 ```
-* Github
-```
 
-## How to check and use my source code:
+On first run, the database will be initialized automatically from `match_history.sql`.
 
-Access rights are public, so you can freely access my website and source code. Below is the link to my source code:
-[GitHub Pages](https://github.com/truonghoangthong/black_jack_game)
+---
 
-## Usage rights:
-This project template is public, so feel free to explore and use it.
+## How to Play
 
-## Contact:
-Copyright © 2024 by Truong Hoang Thong
+| Action | Control |
+|--------|---------|
+| Start game | Press `Space` on the intro screen |
+| Draw a card | Click **Deal** (max 3 draws per round) |
+| End your turn | Click **Stand** |
+| New round | Click **New** after the result is shown |
+| View history | Click **History** from the main menu |
+| Go back | Click **Back** |
 
-For inquiries, contact: lelouchzero093@gmail.com
+**Goal:** Get as close to 21 as possible without going over. Whoever is closest wins. The dealer plays automatically after you stand.
+
+**Card values:**
+- Number cards (2–10): face value
+- Jack, Queen, King: 10
+- Ace: 11 (or 1 if you have 4+ cards)
+- 5-card hand under 21: automatic win
+
+---
+
+## Features
+
+- Dealer AI with randomized draw logic based on score thresholds
+- Match result tracking (wins, losses, ties) stored in SQLite
+- CSV export of full match history on exit
+- Bar chart visualization of cumulative results via matplotlib
+- Background music and animated UI via Pygame
+
+---
+
+## Tech Stack
+
+| Layer        | Technology          |
+|--------------|---------------------|
+| Game engine  | Pygame              |
+| Database     | SQLite3             |
+| Data export  | CSV (built-in)      |
+| Visualization| matplotlib, pandas  |
+| Language     | Python              |
